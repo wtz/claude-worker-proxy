@@ -1,0 +1,11 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "claude-to-x",
+    "main": "src/index.ts",
+    "compatibility_date": "2025-06-20",
+    "vars": {},
+    "observability": {
+        "enabled": true
+    },
+    "compatibility_flags": ["global_fetch_strictly_public"]
+}
