@@ -1,5 +1,5 @@
 {
-    "name": "claude-to-x",
+    "name": "claude-worker-proxy",
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {

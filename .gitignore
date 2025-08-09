@@ -209,3 +209,5 @@ vite.config.ts.timestamp-*
 
 # Custom
 docs/
+.claude/
+CLAUDE.md
