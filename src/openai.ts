@@ -132,6 +132,25 @@ export class impl implements provider.Provider {
             }
         }
 
+
+        // === 在这里插入特殊处理逻辑 ===
+        // 如果目标是 gptoss，把 system 拼到 user
+        if (process.env.OPENAI_API_BASE?.includes("gptoss")) {
+            const sysPrompt = openaiMessages.find(m => m.role === "system")?.content || ""
+            const newMessages = openaiMessages.filter(m => m.role !== "system")
+    
+            if (sysPrompt && newMessages.length > 0) {
+                if (newMessages[0].role === "user") {
+                    newMessages[0].content = sysPrompt + "\n---\n" + newMessages[0].content
+                } else {
+                    newMessages.unshift({ role: "user", content: sysPrompt })
+                }
+            }
+    
+            return [{ role: "system", content: "" }, ...newMessages]
+        }
+
+
         return openaiMessages
     }
 
